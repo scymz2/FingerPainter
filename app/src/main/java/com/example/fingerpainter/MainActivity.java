@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
 
         initView();
 
@@ -109,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
     // Initialize the View
     private void initView() {
         // Reference
+        fpv = findViewById(R.id.fpview);
         c_selection = findViewById(R.id.color);
         b_selection = findViewById(R.id.brush);
         color_text = findViewById(R.id.color_text);
         brush_text = findViewById(R.id.brush_text);
         brush_shape = findViewById(R.id.brush_box);
         save = findViewById(R.id.save);
-        fpv = findViewById(R.id.fpview);
 
         // Set onclickListener
         save.setOnClickListener(new ButtonListener());

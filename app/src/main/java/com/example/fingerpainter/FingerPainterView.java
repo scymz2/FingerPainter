@@ -228,11 +228,7 @@ public class FingerPainterView extends View {
 
         // Format the filename
         File file = new File(dir, fn + ".png");
-        // To avoid duplication
-        while(file.exists()){
-            fn += "*";
-            file = new File(dir, fn + ".png");
-        }
+
         try{
             // Open outputStream and pass image
             FileOutputStream fos = new FileOutputStream(file);

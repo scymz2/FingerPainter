@@ -36,7 +36,6 @@ public class BrushActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brush);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         //receive current brush type and size
         Bundle bundle = getIntent().getExtras();

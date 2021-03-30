@@ -30,11 +30,11 @@ public class ColorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
         
         initView();
     }
 
+    // Reference the UI components
     private void initView(){
         orange = findViewById(R.id.orange);
         yellow = findViewById(R.id.yellow);
@@ -57,6 +57,7 @@ public class ColorActivity extends AppCompatActivity {
 
     }
 
+    // Listener for color selection
     class ColorListener implements View.OnClickListener {
 
         @Override
