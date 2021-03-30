@@ -2,6 +2,7 @@ package com.example.fingerpainter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,9 +11,11 @@ import android.content.res.Configuration;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -22,9 +25,13 @@ public class BrushActivity extends AppCompatActivity{
 
     private Spinner type_spinner;
     private Spinner width_spinner;
+    private ImageView size, type;
+
 
     private Paint.Cap brush_type;
     private int brush_width;
+
+    // Index for spinner selection
     private int width_index;
     private int type_index;
 
@@ -44,6 +51,17 @@ public class BrushActivity extends AppCompatActivity{
         getSpinnerSelection(brush_width, brush_type);
         initView();
 
+        if(savedInstanceState != null){
+            type_index = savedInstanceState.getInt("type");
+            width_index = savedInstanceState.getInt("width");
+            type_spinner.setSelection(type_index);
+            width_spinner.setSelection(width_index);
+
+            // Set the brush view for user to
+            setBrushViewSize(brush_width);
+            setBrushViewType(type_index);
+        }
+
 
     }
 
@@ -56,17 +74,11 @@ public class BrushActivity extends AppCompatActivity{
 
     }
 
-    // retrieve the data after the orientation change
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState){
-        super.onRestoreInstanceState(savedInstanceState);
-        type_index = savedInstanceState.getInt("type");
-        width_index = savedInstanceState.getInt("width");
-        type_spinner.setSelection(type_index);
-        width_spinner.setSelection(width_index);
-    }
 
     private void initView(){
+        size = findViewById(R.id.b_size);
+        type = findViewById(R.id.b_type);
+
         //spinner one for brush type selection
         type_spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type_array,R.layout.support_simple_spinner_dropdown_item);
@@ -77,17 +89,8 @@ public class BrushActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 type_index = i;
-                switch (type_index){
-                    case 0:
-                        brush_type = Paint.Cap.ROUND;
-                        break;
-                    case 1:
-                        brush_type = Paint.Cap.SQUARE;
-                        break;
-                    case 2:
-                        brush_type = Paint.Cap.BUTT;
-                        break;
-                }
+                setBrushViewType(i);
+
             }
 
             @Override
@@ -107,6 +110,7 @@ public class BrushActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 width_index = i;
                 brush_width = Integer.valueOf(adapterView.getItemAtPosition(i).toString());
+                setBrushViewSize(brush_width);
             }
 
             @Override
@@ -166,6 +170,34 @@ public class BrushActivity extends AppCompatActivity{
                 break;
             case BUTT:
                 type_index = 2;
+                break;
+        }
+    }
+
+    private void setBrushViewSize(int width){
+        ViewGroup.LayoutParams params = size.getLayoutParams();
+        params.height=width+8;
+        params.width =width+8;
+        size.setLayoutParams(params);
+    }
+
+
+    private void setBrushViewType(int index){
+        switch (type_index){
+            case 0:
+                type.setImageResource(R.drawable.round);
+                size.setImageResource(R.drawable.round);
+                brush_type = Paint.Cap.ROUND;
+                break;
+            case 1:
+                type.setImageResource(R.drawable.square);
+                size.setImageResource(R.drawable.square);
+                brush_type = Paint.Cap.SQUARE;
+                break;
+            case 2:
+                type.setImageResource(R.drawable.rectangle);
+                size.setImageResource(R.drawable.rectangle);
+                brush_type = Paint.Cap.BUTT;
                 break;
         }
     }

@@ -15,6 +15,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -68,7 +69,10 @@ public class MainActivity extends AppCompatActivity {
         brush_type = fpv.getBrush();
 
         // Implicit intent
-        fpv.load(getIntent().getData());
+        Uri uri = getIntent().getData();
+        //String path = uri.getPath();
+        //Log.d(TAG, "onCreate: "+ path);
+        fpv.load(uri);
 
         // Load settings if state saved
         if(savedInstanceState != null)
@@ -223,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
     // Set the UI to show the current brush shape and width
     private void setBrush(Paint.Cap type, int width){
         brush_text.setText(String.valueOf(width) + "DP");
+        setBrushViewSize(width);
         fpv.setBrushWidth(width);
         switch (type){
             case ROUND:
@@ -246,6 +251,13 @@ public class MainActivity extends AppCompatActivity {
             return false;
         else
             return fileName.matches("[^\\s\\\\/:\\*\\?\\\"<>\\|](\\x20|[^\\s\\\\/:\\*\\?\\\"<>\\|])*[^\\s\\\\/:\\*\\?\\\"<>\\|\\.]$");
+    }
+
+    private void setBrushViewSize(int width){
+        ViewGroup.LayoutParams params = brush_shape.getLayoutParams();
+        params.height=width+8;
+        params.width =width+8;
+        brush_shape.setLayoutParams(params);
     }
 
 }

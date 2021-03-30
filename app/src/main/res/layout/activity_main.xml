@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/gradient"
     tools:context=".MainActivity">
 
     <TextView
@@ -63,8 +63,8 @@
 
         <ImageView
             android:id="@+id/brush_box"
-            android:layout_width="31dp"
-            android:layout_height="20dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/circle" />
 

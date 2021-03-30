@@ -25,13 +25,30 @@
             android:layout_marginBottom="20dp"
             android:text="PLEASE SELECT BRUSH TYPE:"/>
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/roundcorner"
-            android:layout_width="150dp"
-            android:layout_height="40dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/b_type"
+                android:layout_gravity="center"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/round"
+                android:layout_marginRight="15dp"
+                app:tint="@color/colorPrimaryDark" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/roundcorner"
+                android:layout_width="150dp"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -54,13 +71,30 @@
             android:layout_marginBottom="20dp"
             android:text="PLEASE SELECT BRUSH SIZE:"/>
 
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/roundcorner"
-            android:layout_width="100dp"
-            android:layout_height="40dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/b_size"
+                android:layout_gravity="center"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/round"
+                android:layout_marginRight="15dp"
+                app:tint="@color/colorPrimaryDark" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/roundcorner"
+                android:layout_width="150dp"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

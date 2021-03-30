@@ -44,7 +44,7 @@
             android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:columnOrderPreserved="false"
-            android:rowCount="3">
+            android:rowCount="4">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/orange"
