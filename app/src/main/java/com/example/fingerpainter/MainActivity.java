@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.save:
                     Log.d(TAG, "onClick: select save");
                     final EditText file_name = new EditText(MainActivity.this);
-                    new AlertDialog.Builder(MainActivity.this).setTitle("PLEASE SPECIFY THE FILE NAME HERE::")
+                    new AlertDialog.Builder(MainActivity.this).setTitle("PLEASE SPECIFY THE FILE NAME HERE:")
                             .setView(file_name).setPositiveButton("ok!", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
